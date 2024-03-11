@@ -26,6 +26,23 @@ CREATE TABLE IF NOT EXISTS IMAGEN (
         REFERENCES PRODUCTO(ID_producto)
         ON DELETE CASCADE
 );
+
+--Caracteristicas para los productos
+
+CREATE TABLE IF NOT EXISTSE CARACTERISTICA (
+    ID_Caracteristica SERIAL PRIMARY KEY,
+    Descripcion varchar(255) NOT NULL,
+    PRIMARY KEY (ID_Caracteristica)
+);
+
+CREATE TABLE ProductoCaracteristica (
+    ID_producto int NOT NULL,
+    ID_Caracteristica int NOT NULL,
+    PRIMARY KEY (ID_producto, ID_Caracteristica),
+    FOREIGN KEY (ID_producto) REFERENCES Producto(ID_producto) ON DELETE CASCADE,
+    FOREIGN KEY (ID_Caracteristica) REFERENCES Caracteristica(ID_Caracteristica) ON DELETE CASCADE
+);
+
 --Creación de Usuario y Tipo de Usuario
 CREATE TABLE IF NOT EXISTS tipo_usuario (
     ID_tipo_usuario SERIAL PRIMARY KEY,
